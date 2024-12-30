@@ -1,0 +1,97 @@
+---
+const navItems = [
+  { id: 0, name: 'home', link: '/' },
+  { id: 1, name: 'about', link: '/#about' },
+  { id: 2, name: 'projects', link: '/#projects' },
+  { id: 3, name: 'skills', link: '/#skills' },
+  { id: 4, name: 'contact', link: '/#contact' },
+];
+---
+
+<header class="fixed top-0 left-0 w-full z-50">
+  <div class="container mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem]">
+    <nav id="main-nav" class="text-gray-100">
+      <div class="flex justify-between items-center py-6">
+        <!-- Logo Section -->
+        <div class="text-xl md:text-[1.5rem] lg:text-xl font-bold">
+          <a id="menu-title" href="/" class="relative hover:text-orange-500 transition duration-300">
+            VFH Portfolio
+          </a>
+        </div>
+        <!-- Mobile Menu Button -->
+        <button id="menu-toggle" class="lg:hidden text-gray-100 hover:text-orange-500 focus:outline-none">
+          <svg id="menu-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="menu-close" class="h-6 w-6 text-right hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <!-- Navigation Items -->
+					<ul id="menu-items" class="hidden flex-col space-y-4 lg:flex lg:flex-row md:flex-row lg:space-y-0 lg:space-x-12 md:space-x-6 items-start lg:items-center font-mono text-gray-100">
+						{
+							navItems.map( ({ id, name, link }) => (
+								<li>
+									<a href={link} class="group relative inline-block hover:text-orange-500 font-semibold transition duration-300">
+										<span class="text-yellow-500 opacity-0 group-hover:opacity-100 absolute -left-4 transition-opacity duration-300">{">"}</span>
+										<span class="text-orange-500 group-hover:text-gray-100 transition-colors duration-300">0{id}</span>
+										<span class="text-base md:text-[1rem] lg:text-md">/ {name}</span>
+										<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-orange-500 group-hover:w-full transition-all duration-300 whitespace-nowrap"></span>
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				<!-- Navigation Items -->
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuItems = document.getElementById('menu-items');
+  const body = document.body;
+  const menuOpen = document.getElementById('menu-open');
+  const menuClose = document.getElementById('menu-close');
+  const menuTitle = document.getElementById('menu-close');
+
+  function toggleMenu() {
+    menuItems?.classList.toggle('hidden');
+    menuItems.classList.toggle('mobile-menu-active');
+    body.classList.toggle('menu-open');
+    menuOpen?.classList.toggle('hidden');
+    menuClose?.classList.toggle('hidden');
+  }
+
+  menuToggle?.addEventListener('click', toggleMenu);
+
+  // Close Menu when clicking on a link
+  menuItems?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', toggleMenu);
+  });
+
+  // Close menu when clicking outside the menu
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+      menuItems?.classList.remove('mobile-menu-active');
+      menuItems?.classList.add('hidden');
+      body.classList.remove('menu-open');
+      menuOpen?.classList.remove('hidden');
+      menuClose?.classList.add('hidden');
+    }
+  });
+
+  const nav = document.getElementsByTagName('header')[0];
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener('scroll', () => {
+    if (lastScrollY < window.scrollY) {
+      nav?.classList.add('bg-slate-900', 'bg-opacity-80');
+    } else {
+      nav?.classList.remove('bg-slate-900', 'bg-opacity-80');
+    }
+    lastScrollY = window.scrollY;
+  });
+</script>
