@@ -1,6 +1,7 @@
 ---
 import '@fontsource-variable/jetbrains-mono';
 import '../styles/global.css';
+import Main from '../components/Main.astro';
 
 interface LayoutProps {
 	title: string;
@@ -20,6 +21,8 @@ const { title } = Astro.props || 'Portfolio';
 		<title>{ title }</title>
 	</head>
 	<body>
-		<slot />
+		<Main>
+			<slot />
+		</Main>
 	</body>
 </html>
