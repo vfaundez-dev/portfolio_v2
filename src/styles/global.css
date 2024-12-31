@@ -11,9 +11,20 @@
   }
 }
 
+/* Desktop Styles */
+.group:hover .group-hover\:w-full {
+  width: 100% !important;
+}
+
 /* Mobile Menu Styles */
 @media (max-width: 1023px) {
-  .mobile-menu-active {
+  #menu-toggle {
+    display: block;
+    position: relative;
+    z-index: 50;
+  }
+
+  #menu-items.mobile-menu-active {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -21,24 +32,25 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(23, 23, 23, 0.95);
-    padding: 4rem 1rem 1rem; /* Ajustar padding */
+    background-color: rgba(23, 23, 23, 0.9);
+    padding: 6rem 2rem 1rem 3rem;
     animation: fadeIn 0.3s ease-in-out;
     z-index: 30;
   }
 
-  .mobile-menu-active li {
-    text-align: left;
+  #menu-items.mobile-menu-active .menu-item {
+    margin-bottom: 1.5rem; /* Espaciado uniforme entre elementos */
     width: 100%;
   }
 
-  .mobile-menu-active li:last-child {
+  #menu-items.mobile-menu-active .menu-item:last-child {
     margin-bottom: 0;
   }
 
-  .mobile-menu-active a {
+  #menu-items.mobile-menu-active a {
     display: inline-block;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
   }
 
   body.menu-open {
@@ -47,28 +59,5 @@
 
   #main-nav {
     transition: background-color 0.3s ease-in-out;
-  }
-
-  body.menu-open #main-nav {
-    background-color: rgba(23, 23, 23, 1);
-  }
-
-  /* Asegura que el botón de menú esté siempre visible */
-  #menu-toggle {
-    position: relative;
-    z-index: 50;
-  }
-}
-
-/* Larger Screens */
-@media (min-width: 1024px) {
-  .group:hover .group-hover\:w-full {
-    width: 100% !important;
-  }
-
-  /* Ajustar el tamaño de los enlaces en pantallas grandes */
-  #main-nav {
-    padding-left: 2rem;
-    padding-right: 2rem;
   }
 }
