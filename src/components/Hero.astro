@@ -1,10 +1,9 @@
 ---
 import WindowsTerminal from "./WindowsTerminal.astro";
-
-// Hero.astro
 ---
 
-<section class="min-h-screen flex flex-col lg:flex-row">
+<section class="min-h-screen flex flex-col lg:flex-row gap-12">
+  
   <div class="w-full lg:w-1/2 h-screen lg:h-auto flex flex-col justify-center items-center lg:items-start">
     <div class="w-full flex flex-col items-center lg:items-start">
       <h1 class="text-4xl lg:text-6xl font-bold mb-6 text-center lg:text-left">
@@ -60,8 +59,10 @@ import WindowsTerminal from "./WindowsTerminal.astro";
 			</div>
     </div>
   </div>
-  <div class="w-full lg:w-1/2 flex justify-center lg:justify-end items-center py-12 lg:py-0">
+
+  <div class="w-full lg:w-1/2 flex justify-center lg:justify-end items-center py-12 lg:py-0 xl:ms:20 lg:ms-40">
     <WindowsTerminal />
   </div>
+  
 </section>
 

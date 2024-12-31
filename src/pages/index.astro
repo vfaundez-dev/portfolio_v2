@@ -1,19 +1,12 @@
 ---
+import About from "../components/About.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<div class="relative h-screen">
-  <!-- Background Pattern -->
-  <div class="absolute inset-0">
-    <div class="relative h-full w-full bg-slate-950 [&>div]:absolute [&>div]:inset-0 [&>div]:bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] [&>div]:bg-[size:14px_24px] [&>div]:[mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]">
-    	<div></div>
-  	</div>
-  </div>
-  
-	<Layout title="VFH Portfolio">
-		<Header />
-		<Hero />
-	</Layout>
-</div>
+<Layout title="VFH Portfolio">
+	<Header />
+	<Hero />
+	<About />
+</Layout>

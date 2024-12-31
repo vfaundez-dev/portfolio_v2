@@ -1,28 +1,27 @@
 ---
-import '@fontsource-variable/jetbrains-mono';
-import '../styles/global.css';
-import Main from '../components/Main.astro';
+import "@fontsource-variable/jetbrains-mono";
+import "../styles/global.css";
+import Main from "../components/Main.astro";
 
 interface LayoutProps {
-	title: string;
+  title: string;
 }
 
-const { title } = Astro.props || 'Portfolio';
-
+const { title } = Astro.props || "Portfolio";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{ title }</title>
-	</head>
-	<body class="bg-gradient-to-r from-slate-900 to-slate-700">
-		<Main>
-			<slot />
-		</Main>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-gradient-to-r from-slate-900 to-slate-700">
+    <Main>
+      <slot />
+    </Main>
+  </body>
 </html>

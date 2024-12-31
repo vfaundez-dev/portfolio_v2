@@ -11,7 +11,7 @@ const navItems = [
 <header class="fixed top-0 left-0 w-full z-50">
   <div class="container mx-auto px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem]">
     <nav id="main-nav" class="text-gray-100">
-      <div class="flex justify-between items-center py-6">
+      <div class="flex justify-between items-center py-6 xl:py-12 lg:py-12">
         <!-- Logo Section -->
         <div class="text-xl font-bold">
           <a id="menu-title" href="/" class="relative hover:text-orange-500 transition duration-300">
@@ -24,8 +24,12 @@ const navItems = [
             navItems.map(({ id, name, link }) => (
               <li class="menu-item">
                 <a href={link} class="group relative inline-block hover:text-orange-500 font-semibold transition duration-300">
-                  <span class="text-yellow-500 opacity-0 group-hover:opacity-100 absolute -left-4 transition-opacity duration-300">{">"}</span>
-                  <span class="text-orange-500 group-hover:text-gray-100 transition-colors duration-300">0{id}</span>
+                  <span class="text-yellow-500 opacity-0 group-hover:opacity-100 absolute -left-4 transition-opacity duration-300">
+                    {'>'}
+                  </span>
+                  <span class="text-orange-500 group-hover:text-gray-100 transition-colors duration-300">
+                    0{id}
+                  </span>
                   <span class="text-md">/ {name}</span>
                   <span class="absolute -bottom-2 left-0 w-0 h-[1.5px] bg-orange-500 group-hover:w-full transition-all duration-300 whitespace-nowrap"></span>
                 </a>
