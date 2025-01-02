@@ -1,0 +1,75 @@
+---
+import ProjectItem from './ProjectItem.astro';
+import background from '../images/pattern-transparent.svg';
+
+const projects = [
+  {
+    title: 'Mini CRM',
+    description: 'Nisi enim cillum culpa minim quis anim occaecat veniam anim adipisicing excepteur qui aliquip Lorem. Ea excepteur voluptate id magna sunt ea. Exercitation ipsum excepteur dolor non nulla. Officia id ea consequat exercitation enim ad est qui consectetur aliqua. Est mollit nulla magna officia veniam. Et elit mollit labore est ad sunt in proident.',
+    technologies: ['React', 'Node.js', 'MongoDB'],
+    liveUrl: 'https://proyecto1.com',
+    githubUrl: 'https://github.com/usuario/proyecto1'
+  },
+  {
+    title: 'Proyecto 2',
+    description: 'Nisi enim cillum culpa minim quis anim occaecat veniam anim adipisicing excepteur qui aliquip Lorem. Ea excepteur voluptate id magna sunt ea. Exercitation ipsum excepteur dolor non nulla. Officia id ea consequat exercitation enim ad est qui consectetur aliqua. Est mollit nulla magna officia veniam. Et elit mollit labore est ad sunt in proident.',
+    technologies: ['Vue.js', 'Express', 'PostgreSQL'],
+    liveUrl: 'https://proyecto2.com',
+    githubUrl: 'https://github.com/usuario/proyecto2'
+  },
+  {
+    title: 'Proyecto 3',
+    description: 'Nisi enim cillum culpa minim quis anim occaecat veniam anim adipisicing excepteur qui aliquip Lorem. Ea excepteur voluptate id magna sunt ea. Exercitation ipsum excepteur dolor non nulla. Officia id ea consequat exercitation enim ad est qui consectetur aliqua. Est mollit nulla magna officia veniam. Et elit mollit labore est ad sunt in proident.',
+    technologies: ['Javascript', 'Tailwind CSS', 'MySQL', 'MySQL', 'MySQL', 'MySQL', 'MySQL'],
+    liveUrl: 'https://proyecto2.com',
+    githubUrl: 'https://github.com/usuario/proyecto2'
+  },
+  {
+    title: 'Proyecto 3',
+    description: 'Nisi enim cillum culpa minim quis anim occaecat veniam anim adipisicing excepteur qui aliquip Lorem. Ea excepteur voluptate id magna sunt ea. Exercitation ipsum excepteur dolor non nulla. Officia id ea consequat exercitation enim ad est qui consectetur aliqua. Est mollit nulla magna officia veniam. Et elit mollit labore est ad sunt in proident.',
+    technologies: ['Javascript', 'Tailwind CSS', 'MySQL', 'MySQL', 'MySQL', 'MySQL', 'MySQL'],
+    liveUrl: 'https://proyecto2.com',
+    githubUrl: 'https://github.com/usuario/proyecto2'
+  },
+  // ... más proyectos
+];
+---
+
+<section id="projects" class="min-h-screen py-12">
+  
+  <div class="container mx-auto mt-12 lg:mt-20">
+    <!-- Title -->
+    <div class="flex items-center w-full mb-12">
+      <h2 class="text-3xl md:text-4xl text-text">
+        <span class="text-slate-400">02</span>
+        <span class="text-cyan-300">Projects</span>
+      </h2>
+      <svg
+        class="relative md:w-96 hidden md:inline-flex !ml-10"
+        fill="none"
+        height="2"
+        viewBox="0 0 438 2"
+        width="438"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M0 1H438" stroke="#C7D3FF"></path>
+      </svg>
+    </div>
+    <!-- Title -->
+    <!-- Card -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        projects.map( ({ title, description, technologies, liveUrl, githubUrl }) => (
+          <ProjectItem
+            title={ title }
+            description={ description }
+            technologies={ technologies }
+            liveUrl={ liveUrl }
+            githubUrl={ githubUrl }
+          />
+        ))
+      }
+    </div>
+    <!-- Card -->
+  </div>
+</section>

@@ -11,12 +11,11 @@
   }
 }
 
-/* Desktop Styles */
+/*-- HERO SECTION --*/
 .group:hover .group-hover\:w-full {
   width: 100% !important;
 }
 
-/* Mobile Menu Styles */
 @media (max-width: 1023px) {
   #menu-toggle {
     display: block;
