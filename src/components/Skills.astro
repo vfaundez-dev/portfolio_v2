@@ -1,0 +1,69 @@
+---
+import SkillItem from './SkillItem.astro';
+import { skills, tools } from '../data/SkillsData.ts';
+
+// Get image path
+function getImagePath(icon: string) {
+  return `/assets/images/skills/${icon}`;
+}
+---
+
+<section id="skills" class="min-h-screen py-12">
+  <div class="container mx-auto mt-12 lg:mt-20">
+    <!-- Title -->
+    <div class="flex items-center w-full mb-12">
+      <h2 class="text-3xl md:text-4xl text-text">
+        <span class="text-orange-500">03</span>
+        <span class="text-cyan-300">Habilidades</span>
+      </h2>
+      <svg
+        class="relative md:w-96 hidden md:inline-flex !ml-10"
+        fill="none"
+        height="2"
+        viewBox="0 0 438 2"
+        width="438"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M0 1H438" stroke="#C7D3FF"></path>
+      </svg>
+    </div>
+
+    <!-- Content -->
+    <div class="">
+
+      <div class="container mx-auto mb-12">
+        <h3 class="text-2xl font-mono text-white relative inline-block pb-8">
+          <span class="relative z-10 underline underline-offset-8 decoration-2 decoration-zinc-500/30">
+            Lenguajes y Frameworks
+          </span>
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2">
+          {skills.map(skill => (
+            <SkillItem
+              name={skill.name}
+              icon={getImagePath(skill.icon)}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div class="container mx-auto mb-12">
+        <h3 class="text-2xl font-mono text-white relative inline-block pb-8">
+          <span class="relative z-10 underline underline-offset-8 decoration-2 decoration-zinc-500/30">
+            Tecnologías
+          </span>
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2">
+          {tools.map(tool => (
+            <SkillItem
+              name={tool.name}
+              icon={getImagePath(tool.icon)}
+            />
+          ))}
+        </div>
+      </div>
+
+    </div>
+    <!-- Content -->
+  </div>
+</section>

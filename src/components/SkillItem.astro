@@ -1,0 +1,41 @@
+---
+interface Props {
+  name: string;
+  icon?: string;
+}
+
+const { name, icon } = Astro.props;
+---
+
+<div class="group w-full h-full">
+  <div class="bg-gray-900 border-2 border-gray-800 rounded-lg px-1 hover:border-yellow-500 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-500/20 h-full relative flex flex-col justify-between items-center">
+    <!-- Card Content -->
+    <div class="flex-grow flex items-center justify-center py-2">
+      {
+        icon && (
+          <div class="text-cyan-400 group-hover:text-yellow-400 transition-colors duration-300">
+            <img
+              src={ icon }
+              alt={ name }
+              width="44"
+              height="44"
+            />
+          </div>
+        )
+      }
+    </div>
+    <!-- Card Content -->
+    <!-- Title -->
+    <h3 class="text-white text-base mb-2 tracking-wide text-center group-hover:text-yellow-400 transition-colors duration-300">
+      {name}
+    </h3>
+    <!-- Title -->
+    <!-- Terminal-like decoration -->
+    <div class="absolute top-1 right-2 flex gap-1">
+      <div class="w-[6px] h-[6px] rounded-full bg-red-500"></div>
+      <div class="w-[6px] h-[6px] rounded-full bg-yellow-500"></div>
+      <div class="w-[6px] h-[6px] rounded-full bg-green-500"></div>
+    </div>
+    <!-- Terminal-like decoration -->
+  </div>
+</div>
