@@ -6,6 +6,8 @@ html {
   scroll-behavior: smooth;
 }
 
+/*-- HEADER SECTION --*/
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -15,9 +17,20 @@ html {
   }
 }
 
-/*-- HERO SECTION --*/
-.group:hover .group-hover\:w-full {
-  width: 100% !important;
+/* Enhanced Glassmorphism effect */
+.glassmorphism::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(2, 6, 23, 0.4);
+  backdrop-filter: blur(10px) saturate(100%);
+  -webkit-backdrop-filter: blur(10px) saturate(100%);
+  z-index: -1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 1023px) {
@@ -42,7 +55,7 @@ html {
   }
 
   #menu-items.mobile-menu-active .menu-item {
-    margin-bottom: 1.5rem; /* Espaciado uniforme entre elementos */
+    margin-bottom: 1.5rem;
     width: 100%;
   }
 
@@ -63,4 +76,13 @@ html {
   #main-nav {
     transition: background-color 0.3s ease-in-out;
   }
+
+  .glassmorphism #menu-items.mobile-menu-active {
+    background-color: rgba(23, 23, 23, 1) !important;
+  }
+}
+
+/*-- HERO SECTION --*/
+.group:hover .group-hover\:w-full {
+  width: 100% !important;
 }
