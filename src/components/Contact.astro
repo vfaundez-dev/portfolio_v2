@@ -1,8 +1,9 @@
 ---
 import ContactForm from './ContactForm.astro';
+import ContactCard from './ContactCard.astro';
 ---
 
-<section id="skills" class="min-h-screen py-12">
+<section id="contact" class="min-h-screen py-12">
   <div class="container mx-auto mt-12 lg:mt-20">
 
     <!-- Title -->
@@ -24,30 +25,19 @@ import ContactForm from './ContactForm.astro';
     </div>
     <!-- Title -->
 
-    <!-- Form -->
-    <div class="max-w-3xl mx-auto">
-      <ContactForm />
+    <!-- Content -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-2">
+
+      <div class="h-full lg:col-span-4">
+        <ContactCard />
+      </div>
+
+      <div class="h-full lg:col-span-8">
+        <ContactForm />
+      </div>
+
     </div>
-    <!-- Form -->
+    <!-- Content -->
     
   </div>
 </section>
-
-<!-- <section id="contact" class="min-h-screen py-16 md:py-24 bg-gray-950">
-  <div class="container mx-auto px-4 md:px-6">
-
-    <div class="flex flex-col items-center w-full mb-12 md:mb-16">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-        <span class="text-orange-500">04</span>
-        <span class="text-cyan-300">Contacto</span>
-      </h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-cyan-300 to-orange-500 rounded-full"></div>
-    </div>
-
-
-    <div class="max-w-3xl mx-auto">
-      <ContactForm />
-    </div>
-  </div>
-</section> -->
-

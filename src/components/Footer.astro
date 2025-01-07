@@ -2,10 +2,15 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-gray-900/60 rounded-t-lg shadow">
-	<div class="w-full mx-auto max-w-screen-xl p-5 text-center">
-		<span class="text-sm text-gray-300 ">
-			@{year} <a href="#" class="hover:underline">VFH DEV™</a>. Todos los derechos reservados.
-		</span>
+<footer class="bg-gradient-to-r from-[#1c2333] to-[#2a324d] rounded-t-lg py-8">
+	<div class="container mx-auto px-4">
+		<div class="flex justify-center items-center">
+			<p class="text-sm text-gray-400 relative group">
+				<span class="relative z-10 transition-colors duration-300 ease-in-out group-hover:text-white">
+					© {year} Vladimir Faundez Hernandez. Todos los derechos reservados.
+				</span>
+				<span class="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-indigo-500 via-teal-500 to-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
+			</p>
+		</div>
 	</div>
 </footer>
