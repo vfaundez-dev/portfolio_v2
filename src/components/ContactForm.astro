@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <div class="w-full h-full flex flex-col bg-[#1c2333] rounded-lg lg:rounded-l-none shadow-2xl border border-[#2a324d] opacity-80">
@@ -24,31 +25,37 @@
   
   <!-- Form -->
   <div class="flex-grow p-4 md:p-8 lg:p-10 text-green-400 font-mono">
-    <form class="h-full flex flex-col justify-between">
+    <form id="contactForm" method="post" class="h-full flex flex-col justify-between">
       <div class="space-y-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div class="relative z-0">
             <input
               type="text"
-              id="full_text"
+              id="full_name"
+              name="full_name"
               class="block py-2.5 px-0 w-full text-sm text-gray-300 bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-[#00ff00] peer"
-              placeholder=" "
+              placeholder=""
+              
             />
-            <label for="full_text" class="absolute text-md text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#00ff00] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
+            <label for="full_name" class="absolute text-md text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#00ff00] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
               Nombre y apellido
             </label>
+            <p class="mt-2 text-sm text-red-500 hidden" id="full_name_error"></p>
           </div>
     
           <div class="relative z-0">
             <input
               type="email"
               id="email"
+              name="email"
               class="block py-2.5 px-0 w-full text-sm text-gray-300 bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-[#00ff00] peer"
-              placeholder=" "
+              placeholder=""
+              
             />
             <label for="email" class="absolute text-md text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#00ff00] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
               Correo
             </label>
+            <p class="mt-2 text-sm text-red-500 hidden" id="email_error"></p>
           </div>
         </div>
     
@@ -56,47 +63,78 @@
           <input
             type="text"
             id="subject"
+            name="subject"
             class="block py-2.5 px-0 w-full text-sm text-gray-300 bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-[#00ff00] peer"
-            placeholder=" "
+            placeholder=""
+            
           />
           <label for="subject" class="absolute text-md text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#00ff00] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
             Asunto
           </label>
+          <p class="mt-2 text-sm text-red-500 hidden" id="subject_error"></p>
         </div>
     
         <div class="relative z-0 flex-grow">
           <textarea 
-            id="message" 
-            required
+            id="message"
+            name="message"
             rows="8"
             placeholder=" "
             class="block py-2.5 px-0 w-full text-sm text-gray-300 bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-[#00ff00] peer"
+            
           ></textarea>
           <label for="message" class="absolute text-md text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#00ff00] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
             Mensaje
           </label>
+          <p class="mt-2 text-sm text-red-500 hidden" id="message_error"></p>
         </div>
       </div>
       
-      <button 
-        type="submit" 
-        class="group flex items-center text-gray-300 hover:text-[#00ff00] transition-colors mt-4"
-      >
-        ENVIAR MENSAJE
+      <button type="submit" class="group py-4 flex items-center text-gray-300 hover:text-[#00ff00] transition-colors mt-4">
+        <span class="relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#00ff00] after:transition-all after:duration-300 group-hover:after:w-full">
+          ENVIAR MENSAJE
+        </span>
         <svg 
-          class="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
+          viewBox="0 0 16 16" 
+          xmlns="http://www.w3.org/2000/svg" 
+          class="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1 fill-current group-hover:text-[#00ff00]"
         >
-          <path 
-            stroke-linecap="round" 
-            stroke-linejoin="round" 
-            stroke-width="2" 
-            d="M17 8l4 4m0 0l-4 4m4-4H3"
-          />
+          <g>
+            <path d="M7 13V10H0L0 6H7V3H8L13 8L8 13H7Z"></path>
+            <path d="M14 14V2H16V14H14Z"></path>
+          </g>
         </svg>
       </button>
+
     </form>
   </div>
 </div>
+
+<script>
+  import JustValidate from 'just-validate';
+  const validate = new JustValidate('#contactForm');
+
+  validate
+    .addField('#full_name', [
+      { rule: 'required', errorMessage: 'Obligatorio' },
+      { rule: 'minLength', value: 3, errorMessage: 'Debe tener al menos 3 caracteres' },
+    ])
+    .addField('#email', [
+      { rule: 'required', errorMessage: 'Obligatorio' },
+      { rule: 'email', errorMessage: 'Correo inválido' },
+    ])
+    .addField('#subject', [
+      { rule: 'required', errorMessage: 'Obligatorio' },
+      { rule: 'minLength', value: 5, errorMessage: 'Debe tener al menos 5 caracteres' },
+    ])
+    .addField('#message', [
+      { rule: 'required', errorMessage: 'Obligatorio' },
+      { rule: 'minLength', value: 5, errorMessage: 'Debe tener al menos 5 caracteres' },
+    ])
+    .onSuccess( event => {
+      event.preventDefault();
+
+      
+      alert('Formulario enviado!');
+    });
+</script>

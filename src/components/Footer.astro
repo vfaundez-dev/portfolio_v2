@@ -3,14 +3,19 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="bg-gradient-to-r from-[#1c2333] to-[#2a324d] rounded-t-lg py-8">
-	<div class="container mx-auto px-4">
-		<div class="flex justify-center items-center">
-			<p class="text-sm text-gray-400 relative group">
-				<span class="relative z-10 transition-colors duration-300 ease-in-out group-hover:text-white">
-					© {year} Vladimir Faundez Hernandez. Todos los derechos reservados.
-				</span>
-				<span class="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-indigo-500 via-teal-500 to-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
-			</p>
-		</div>
-	</div>
+  <div class="container mx-auto px-4">
+    <div class="flex justify-center items-center">
+      <p class="text-sm text-center text-gray-400">
+        <span class="relative inline-block transition-all duration-300 ease-in-out hover:text-gray-100 hover:shadow-glow">
+          ©{year} Vladimir Faundez Hernandez. Todos los derechos reservados.
+        </span>
+      </p>
+    </div>
+  </div>
 </footer>
+
+<style>
+  .hover\:shadow-glow:hover {
+    text-shadow: 0 0 10px rgba(255,255,255,0.7), 0 0 20px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3);
+  }
+</style>
