@@ -40,7 +40,6 @@
             <label for="full_name" class="absolute text-md text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#00ff00] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
               Nombre y apellido
             </label>
-            <p class="mt-2 text-sm text-red-500 hidden" id="full_name_error"></p>
           </div>
     
           <div class="relative z-0">
@@ -55,7 +54,6 @@
             <label for="email" class="absolute text-md text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#00ff00] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
               Correo
             </label>
-            <p class="mt-2 text-sm text-red-500 hidden" id="email_error"></p>
           </div>
         </div>
     
@@ -71,7 +69,6 @@
           <label for="subject" class="absolute text-md text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#00ff00] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
             Asunto
           </label>
-          <p class="mt-2 text-sm text-red-500 hidden" id="subject_error"></p>
         </div>
     
         <div class="relative z-0 flex-grow">
@@ -86,24 +83,32 @@
           <label for="message" class="absolute text-md text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#00ff00] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
             Mensaje
           </label>
-          <p class="mt-2 text-sm text-red-500 hidden" id="message_error"></p>
         </div>
       </div>
-      
-      <button type="submit" class="group py-4 flex items-center text-gray-300 hover:text-[#00ff00] transition-colors mt-4">
-        <span class="relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#00ff00] after:transition-all after:duration-300 group-hover:after:w-full">
+
+      <div id="sending" class="mt-4 text-center">
+        <div id="sending-message" class="text-[#00ff00] animate-pulse hidden">
+          Enviando
+          <span class="inline-block animate-bounce">.</span>
+          <span class="inline-block animate-bounce delay-100">.</span>
+          <span class="inline-block animate-bounce delay-200">.</span>
+        </div>
+        <div id="sent-message" class="text-[#00ff00] font-bold text-lg hidden opacity-0 transition-all duration-500 ease-in-out transform translate-y-4">
+          ¡Mensaje enviado!
+        </div>
+      </div>
+
+      <button
+        id="btnSubmit"
+        class="mt-8 relative text-center h-12 w-full transition-all duration-500 before:absolute before:top-0 before:left-0 before:w-full
+          before:h-full before:bg-zinc-400 before:transition-all before:duration-300 before:opacity-10 before:hover:opacity-0
+          after:absolute after:top-0 after:left-0 after:w-full after:h-full after:opacity-0 after:transition-all 
+          after:duration-300 after:border after:border-[#00ff00] after:hover:opacity-100 disabled:before:hover:opacity-10
+          disabled:after:hover:opacity-0 disabled:opacity-50 group"
+      >
+        <span class="relative text-gray-300 uppercase font-mono transition-colors duration-300 group-hover:text-[#00ff00]">
           ENVIAR MENSAJE
         </span>
-        <svg 
-          viewBox="0 0 16 16" 
-          xmlns="http://www.w3.org/2000/svg" 
-          class="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1 fill-current group-hover:text-[#00ff00]"
-        >
-          <g>
-            <path d="M7 13V10H0L0 6H7V3H8L13 8L8 13H7Z"></path>
-            <path d="M14 14V2H16V14H14Z"></path>
-          </g>
-        </svg>
       </button>
 
     </form>
@@ -112,29 +117,57 @@
 
 <script>
   import JustValidate from 'just-validate';
-  const validate = new JustValidate('#contactForm');
+  const validate = new JustValidate('#contactForm', {
+    errorLabelCssClass: 'mt-2 text-sm text-red-400 font-semibold',
+    errorLabelStyle: ''
+  });
 
   validate
     .addField('#full_name', [
-      { rule: 'required', errorMessage: 'Obligatorio' },
-      { rule: 'minLength', value: 3, errorMessage: 'Debe tener al menos 3 caracteres' },
+      { rule: 'required', errorMessage: '[Obligatorio]' },
+      { rule: 'minLength', value: 3, errorMessage: '[Debe tener al menos 3 caracteres]' },
     ])
     .addField('#email', [
-      { rule: 'required', errorMessage: 'Obligatorio' },
-      { rule: 'email', errorMessage: 'Correo inválido' },
+      { rule: 'required', errorMessage: '[Obligatorio]' },
+      { rule: 'email', errorMessage: '[Correo inválido]' },
     ])
     .addField('#subject', [
-      { rule: 'required', errorMessage: 'Obligatorio' },
-      { rule: 'minLength', value: 5, errorMessage: 'Debe tener al menos 5 caracteres' },
+      { rule: 'required', errorMessage: '[Obligatorio]' },
+      { rule: 'minLength', value: 5, errorMessage: '[Debe tener al menos 5 caracteres]' },
     ])
     .addField('#message', [
-      { rule: 'required', errorMessage: 'Obligatorio' },
-      { rule: 'minLength', value: 5, errorMessage: 'Debe tener al menos 5 caracteres' },
+      { rule: 'required', errorMessage: '[Obligatorio]' },
+      { rule: 'minLength', value: 5, errorMessage: '[Debe tener al menos 5 caracteres]' },
     ])
     .onSuccess( event => {
       event.preventDefault();
-
+      const btnSubmit = event.currentTarget.querySelector('#btnSubmit');
+      const sendingDiv = document.getElementById('sending');
+      const sendingMessage = document.getElementById('sending-message');
+      const sentMessage = document.getElementById('sent-message');
+      btnSubmit.disabled = true;
       
-      alert('Formulario enviado!');
+      sendingDiv.classList.remove('hidden');
+      sendingMessage.classList.remove('hidden');
+
+      // Simular envío de formulario
+      setTimeout(() => {
+        sendingMessage.classList.add('hidden');
+        sentMessage.classList.remove('hidden');
+        // Aplicar el efecto de fade-in y slide-up
+        requestAnimationFrame(() => {
+          sentMessage.classList.remove('opacity-0', 'translate-y-4');
+        });
+
+        // Resetear el formulario después de 3 segundos
+        setTimeout(() => {
+          event.target.reset();
+          btnSubmit.disabled = false;
+          sentMessage.classList.add('hidden', 'opacity-0', 'translate-y-4');
+        }, 3000);
+      }, 2000);
+
     });
+
+
 </script>
