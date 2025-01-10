@@ -1,38 +1,8 @@
 ---
 import ProjectItem from './ProjectItem.astro';
-import background from '../images/bg_code_numbers.png';
+import { projectsData } from '../data/ProjectsData';
 
-const projects = [
-  {
-    title: 'Mini CRM',
-    description: 'Nisi enim cillum culpa minim quis anim occaecat veniam anim adipisicing excepteur qui aliquip Lorem. Ea excepteur voluptate id magna sunt ea. Exercitation ipsum excepteur dolor non nulla. Officia id ea consequat exercitation enim ad est qui consectetur aliqua. Est mollit nulla magna officia veniam. Et elit mollit labore est ad sunt in proident.',
-    technologies: ['React', 'Node.js', 'MongoDB'],
-    liveUrl: 'https://proyecto1.com',
-    githubUrl: 'https://github.com/usuario/proyecto1'
-  },
-  {
-    title: 'Proyecto 2',
-    description: 'Nisi enim cillum culpa minim quis anim occaecat veniam anim adipisicing excepteur qui aliquip Lorem. Ea excepteur voluptate id magna sunt ea. Exercitation ipsum excepteur dolor non nulla. Officia id ea consequat exercitation enim ad est qui consectetur aliqua. Est mollit nulla magna officia veniam. Et elit mollit labore est ad sunt in proident.',
-    technologies: ['Vue.js', 'Express', 'PostgreSQL'],
-    liveUrl: 'https://proyecto2.com',
-    githubUrl: 'https://github.com/usuario/proyecto2'
-  },
-  {
-    title: 'Proyecto 3',
-    description: 'Nisi enim cillum culpa minim quis anim occaecat veniam anim adipisicing excepteur qui aliquip Lorem. Ea excepteur voluptate id magna sunt ea. Exercitation ipsum excepteur dolor non nulla. Officia id ea consequat exercitation enim ad est qui consectetur aliqua. Est mollit nulla magna officia veniam. Et elit mollit labore est ad sunt in proident.',
-    technologies: ['Javascript', 'Tailwind CSS', 'MySQL', 'MySQL', 'MySQL', 'MySQL', 'MySQL'],
-    liveUrl: 'https://proyecto2.com',
-    githubUrl: 'https://github.com/usuario/proyecto2'
-  },
-  {
-    title: 'Proyecto 3',
-    description: 'Nisi enim cillum culpa minim quis anim occaecat veniam anim adipisicing excepteur qui aliquip Lorem. Ea excepteur voluptate id magna sunt ea. Exercitation ipsum excepteur dolor non nulla. Officia id ea consequat exercitation enim ad est qui consectetur aliqua. Est mollit nulla magna officia veniam. Et elit mollit labore est ad sunt in proident.',
-    technologies: ['Javascript', 'Tailwind CSS', 'MySQL', 'MySQL', 'MySQL', 'MySQL', 'MySQL'],
-    liveUrl: 'https://proyecto2.com',
-    githubUrl: 'https://github.com/usuario/proyecto2'
-  },
-  // ... más proyectos
-];
+
 ---
 
 <section id="projects" class="min-h-screen py-12">
@@ -56,9 +26,9 @@ const projects = [
     </div>
     <!-- Title -->
     <!-- Card -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
       {
-        projects.map( ({ title, description, technologies, liveUrl, githubUrl }) => (
+        projectsData.map( ({ title, description, technologies, liveUrl, githubUrl }) => (
           <ProjectItem
             title={ title }
             description={ description }
