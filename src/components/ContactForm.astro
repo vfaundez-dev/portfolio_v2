@@ -1,5 +1,4 @@
 ---
-
 ---
 
 <div class="w-full h-full flex flex-col bg-[#1c2333] rounded-lg lg:rounded-l-none shadow-2xl border border-[#2a324d] opacity-80">
@@ -139,35 +138,80 @@
       { rule: 'required', errorMessage: '[Obligatorio]' },
       { rule: 'minLength', value: 5, errorMessage: '[Debe tener al menos 5 caracteres]' },
     ])
-    .onSuccess( (event: any) => {
+    .onSuccess( async (event: any) => {
       event.preventDefault();
-      const btnSubmit = event.currentTarget.querySelector('#btnSubmit');
+
+      const form = event.target as HTMLFormElement;
+      const btnSubmit = form.querySelector('#btnSubmit') as HTMLButtonElement;
       const sendingDiv = document.getElementById('sending');
       const sendingMessage = document.getElementById('sending-message');
       const sentMessage = document.getElementById('sent-message');
+      const errorMessage = document.getElementById('error-message');
+      // Actions
       btnSubmit.disabled = true;
-      
       sendingDiv?.classList.remove('hidden');
       sendingMessage?.classList.remove('hidden');
+      sentMessage?.classList.add('hidden', 'opacity-0', 'translate-y-4');
+      errorMessage?.classList.add('hidden', 'opacity-0', 'translate-y-4');
+      // Form Data
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
 
-      // Simular envío de formulario
-      setTimeout(() => {
+      try {
+
+        const response = await fetch('/api/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        
         sendingMessage?.classList.add('hidden');
+
         sentMessage?.classList.remove('hidden');
-        // Aplicar el efecto de fade-in y slide-up
         requestAnimationFrame(() => {
           sentMessage?.classList.remove('opacity-0', 'translate-y-4');
         });
 
-        // Resetear el formulario después de 3 segundos
+        const result = await response.json();
+        
+        if (result.success) {
+          sentMessage?.classList.remove('hidden');
+          requestAnimationFrame(() => {
+            sentMessage?.classList.remove('opacity-0', 'translate-y-4');
+          });
+
+          setTimeout(() => {
+            form.reset();
+            sentMessage?.classList.add('hidden', 'opacity-0', 'translate-y-4');
+            sendingDiv?.classList.add('hidden');
+          }, 3000);
+
+        } else {
+          console.error('Error al enviar el correo:', result.error);
+          alert('Error al enviar el mensaje!!! Intente nuevamente...');
+          sendingDiv?.classList.add('hidden');
+          form.reset();
+          return;
+        }
+
+      } catch (error) {
+        
+        console.error('Error al enviar el email:', error);
+        sendingMessage?.classList.add('hidden');
+        errorMessage?.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          errorMessage?.classList.remove('opacity-0', 'translate-y-4');
+        });
+
         setTimeout(() => {
-          event.target.reset();
-          btnSubmit.disabled = false;
-          sentMessage?.classList.add('hidden', 'opacity-0', 'translate-y-4');
+          errorMessage?.classList.add('hidden', 'opacity-0', 'translate-y-4');
+          sendingDiv?.classList.add('hidden');
         }, 3000);
-      }, 2000);
+
+      } finally {
+        btnSubmit.disabled = false;
+      }
 
     });
-
 
 </script>
