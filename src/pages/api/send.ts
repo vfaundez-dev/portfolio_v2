@@ -1,5 +1,5 @@
 import { Resend } from 'resend';
-const resend = new Resend(import.meta.env.SECRET_RESEND_API_KEY);
+const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 export async function POST({ request }: { request: Request }) {
   try {

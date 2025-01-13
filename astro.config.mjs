@@ -8,4 +8,12 @@ export default defineConfig({
   output: 'server',
   integrations: [tailwind()],
   adapter: netlify(),
+  vite: {
+    ssr: {
+      external: ['@11ty/eleventy-img', 'svgo']
+    }
+  },
+  server: {
+    host: true
+  }
 });
