@@ -8,10 +8,11 @@ export async function POST({ request }: { request: Request }) {
     const email = {
       from: 'VFH Portfolio <onboarding@resend.dev>',
       to: 'v.faundezh@gmail.com',
-      subject: `Nuevo mensaje de ${dataRequest.full_name}`,
+      subject: 'Te han contactado desde Portafilio Web',
       html: `
         <h1>Nuevo mensaje de contacto</h1>
         <p><strong>Nombre:</strong> ${dataRequest.full_name}</p>
+        <p><strong>Asunto:</strong> ${dataRequest.subject}</p>
         <p><strong>Correo electrónico:</strong> ${dataRequest.email}</p>
         <p><strong>Mensaje:</strong> ${dataRequest.message}</p>
       `,
