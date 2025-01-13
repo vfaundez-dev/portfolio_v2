@@ -20,6 +20,7 @@ export const tools = [
   { name: 'Git', icon: 'git.svg' },
   { name: 'Github', icon: 'github.svg' },
   { name: 'Vite', icon: 'vite.svg' },
+  { name: 'Netlify', icon: 'netlify.svg' },
   { name: 'Postman', icon: 'postman.svg' },
   { name: 'Power BI', icon: 'power-bi.svg' },
   { name: 'Power Automate', icon: 'power-automate.svg' },
