@@ -85,6 +85,13 @@
         </div>
       </div>
 
+      <!-- ReCAPTCHA Widget -->
+      <div
+        class="g-recaptcha flex justify-end mt-4"
+        data-theme="dark"
+        data-sitekey={import.meta.env.RECAPTCHA_SITE_KEY}
+      ></div>
+
       <div id="sending" class="mt-4 text-center">
         <div id="sending-message" class="text-[#00ff00] animate-pulse hidden">
           Enviando
@@ -99,7 +106,7 @@
 
       <button
         id="btnSubmit"
-        class="mt-8 relative text-center h-12 w-full transition-all duration-500 before:absolute before:top-0 before:left-0 before:w-full
+        class="mt-4 relative text-center h-12 w-full transition-all duration-500 before:absolute before:top-0 before:left-0 before:w-full
           before:h-full before:bg-zinc-400 before:transition-all before:duration-300 before:opacity-10 before:hover:opacity-0
           after:absolute after:top-0 after:left-0 after:w-full after:h-full after:opacity-0 after:transition-all 
           after:duration-300 after:border after:border-[#00ff00] after:hover:opacity-100 disabled:before:hover:opacity-10
@@ -113,6 +120,8 @@
     </form>
   </div>
 </div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script>
   import JustValidate from 'just-validate';
@@ -141,6 +150,13 @@
     .onSuccess( async (event: any) => {
       event.preventDefault();
 
+      // Verify reCAPTCHA
+      const recaptchaResponse = grecaptcha.getResponse();
+      if (!recaptchaResponse) {
+        alert('Por favor, completa el reCAPTCHA antes de enviar el formulario.');
+        return;
+      }
+
       const form = event.target as HTMLFormElement;
       const btnSubmit = form.querySelector('#btnSubmit') as HTMLButtonElement;
       const sendingDiv = document.getElementById('sending');
@@ -155,7 +171,8 @@
       errorMessage?.classList.add('hidden', 'opacity-0', 'translate-y-4');
       // Form Data
       const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
+      formData.append('recaptcha', recaptchaResponse);
+      const data = Object.fromEntries( formData.entries() );
 
       try {
 
@@ -210,6 +227,7 @@
 
       } finally {
         btnSubmit.disabled = false;
+        grecaptcha.reset();
       }
 
     });
