@@ -12,5 +12,12 @@ export const projectsData = [
     technologies: ['PHP', 'Laravel', 'Javascript' ,'API', 'Data Scraping'],
     githubUrl: 'https://github.com/vfaundez-dev/sii_consulta_tributaria',
     liveUrl: ''
+  },
+  {
+    title: 'VFH Mini CRM',
+    description: 'Sistema CRM realizado con Laravel 10, el cual cuenta con las funcionalidades básicas de un CRM. Permite la gestión de clientes, contactos, actividades y oportunidades, además de contar con un pequeño dashboard para análisis de métrica de los datos ingresados.',
+    technologies: ['PHP', 'Laravel', 'Javascript' ,'Vite', 'AdminLTE'],
+    githubUrl: 'https://github.com/vfaundez-dev/mini-crm',
+    liveUrl: ''
   }
 ];
