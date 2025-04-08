@@ -86,3 +86,7 @@ html {
 .group:hover .group-hover\:w-full {
   width: 100% !important;
 }
+
+#rc-anchor-container {
+  background: none !important;
+}
