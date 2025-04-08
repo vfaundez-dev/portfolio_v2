@@ -24,7 +24,7 @@ export const projectsData = [
     title: 'VFH API - Sistema de Reservas para Restaurantes (En desarrollo)',
     description: 'API para la gestión de reservas, clientes y mesas. Desarrollado en Laravel 11, cuenta con base de datos en PostgreSQL y autenticación JWT.',
     technologies: ['PHP', 'Laravel', 'API' ,'JWT', 'Swagger'],
-    githubUrl: '#',
+    githubUrl: 'https://github.com/vfaundez-dev/sistema_reserva_restaurantes',
     liveUrl: ''
   }
 ];
